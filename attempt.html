@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELCOME TO THE OTHER SIDE</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="attempt.css">
+    <link rel="icon" href="TOS.jpeg">
+    <meta name="description" content="This is the other side website.">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Hide content outside the viewport */
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+            color: white;
+           
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Additional styles can be added here */
+    </style>
+</head>
+<body>
+    
+    <header class="bg-dark text-white">
+        <div class="container">
+            <div class="logo">
+                <img src="official.png" alt="Logo" class="img-fluid">
+            </div>
+            <h1>Hello world</h1>
+            <div class="dropdown">
+                <span>Categories &#9662;</span>
+                <div class="dropdown-content cta-button">
+                    <a href="hiphop.html">Hip Hop</a>
+                    <a href="dual.html">Dual</a>
+                    <a href="rnb.html">RnB</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="image_text">
+            <div class="slider-container">
+                <!-- Your slides go here -->
+            </div>
+        </div>
+    </div>
+    
+    <footer class="bg-dark text-white py-3">
+        <div class="container">
+            <p>&copy; 2023 BBC Innovations</p> 
+            <p><a href="privacy.html" class="text-white">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS (Optional: Only if you need Bootstrap JavaScript features) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+        // JavaScript to handle section transition
+        const sections = document.querySelectorAll('.slide');
+        let currentSection = 0;
+
+        function showSection(index) {
+            sections.forEach((section, i) => {
+                section.style.opacity = i === index ? '1' : '0';
+            });
+        }
+
+        function nextSection() {
+            showSection(currentSection);
+            currentSection = (currentSection + 1) % sections.length;
+        }
+
+        setInterval(nextSection, 5000); // Change section every 5 seconds (adjust as needed)
+
+        // Show the first section immediately when the page loads
+        showSection(currentSection);
+    </script>
+
+</body>
+</html>

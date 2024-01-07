@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="style_project.css">
+    <title>R&B Section</title>
+    <link rel="icon" href="TOS.jpeg">
+
+</head>
+<body>
+    <header>
+        <h1>The Other Side</h1>
+    </header>
+
+    <section>
+        <h1>Welcome to the R&B Section</h1>
+        <p>In this section you get to choose the best R&B artists</p>
+    </section>
+
+    <form id="votingForm">
+        <h2>Select your favorite R&B song:</h2>
+        <label>
+            <input type="radio" name="vote" value="song1"> Song 1
+        </label>
+        <label>
+            <input type="radio" name="vote" value="song2"> Song 2
+        </label>
+        <label>
+            <input type="radio" name="vote" value="song3"> Song 3
+        </label>
+        <button type="button" onclick="submitVote()">Submit Vote</button>
+    </form>
+    <div class="results" id="results">
+        <h2>Results:</h2>
+        <p id="song1Votes">Song 1: 0 votes</p>
+        <p id="song2Votes">Song 2: 0 votes</p>
+        <p id="song3Votes">Song 3: 0 votes</p>
+    </div>
+     <!-- Add a home button to navigate back to the home page -->
+    <a href="#" class="home-button" onclick="goToHomePage()">Back to Home</a>
+</body>  
+</html>  
+
+
+<script>
+// ...
+
+function submitVote() {
+    const form = document.getElementById('votingForm');
+    const selectedSong = form.querySelector('input[name="vote"]:checked');
+
+    if (selectedSong) {
+        const songValue = selectedSong.value;
+
+        // Check if the user has already voted in the current session
+        if (!sessionStorage.getItem('hasVoted')) {
+
+            // Check if the user has already voted for this song in previous sessions
+            if (!localStorage.getItem(songValue)) {
+                votes[songValue]++;
+                updateResults();
+                localStorage.setItem(songValue, 'voted'); // Mark the user as voted for this song
+                sessionStorage.setItem('hasVoted', 'true'); // Mark the user as voted in the current session
+                form.reset(); // Reset the form after voting
+            } else {
+                displayErrorMessage('You have already voted for this song.');
+            }
+        } else {
+            displayErrorMessage('You can only vote once per session.');
+        }
+    } else {
+        displayErrorMessage('Please select a song before submitting your vote.');
+    }
+}
+
+// ...
+
+function displayErrorMessage(message) {
+    const errorMessage = document.createElement('p');
+    errorMessage.style.color = 'red';
+    errorMessage.textContent = message;
+
+    const form = document.getElementById('votingForm');
+    form.appendChild(errorMessage);
+
+    // Remove the error message after a certain period (e.g., 3 seconds)
+    setTimeout(() => {
+        form.removeChild(errorMessage);
+    }, 3000);
+}
+</script>

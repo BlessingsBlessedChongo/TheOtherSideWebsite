@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artist Poll</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .artist {
+      margin-bottom: 10px;
+    }
+
+    button {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      width: 100%;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #chart {
+      margin-top: 20px;
+    }
+
+    .bar {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .bar-label {
+      width: 100px;
+      text-align: right;
+      margin-right: 10px;
+    }
+
+    .bar-graph {
+      flex: 1;
+      height: 20px;
+      background-color: #3498db;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Vote for Your Favorite Artist</h1>
+  </header>
+
+  <main>
+    <div class="artist">
+      <input type="radio" name="artist" value="artist1" id="artist1">
+      <label for="artist1">Artist 1</label>
+    </div>
+
+    <div class="artist">
+      <input type="radio" name="artist" value="artist2" id="artist2">
+      <label for="artist2">Artist 2</label>
+    </div>
+
+    <div class="artist">
+      <input type="radio" name="artist" value="artist3" id="artist3">
+      <label for="artist3">Artist 3</label>
+    </div>
+
+    <button onclick="vote()">Vote</button>
+
+    <div id="chart"></div>
+  </main>
+
+  <script>
+    function vote() {
+      var selectedArtist = document.querySelector('input[name="artist"]:checked');
+
+      if (selectedArtist) {
+        var artistName = selectedArtist.value;
+        updateChart(artistName);
+      } else {
+        alert('Please select an artist before voting.');
+      }
+    }
+
+    function updateChart(artistName) {
+      var chart = document.getElementById('chart');
+      var bar = document.createElement('div');
+      bar.className = 'bar';
+
+      var label = document.createElement('div');
+      label.className = 'bar-label';
+      label.textContent = artistName;
+      bar.appendChild(label);
+
+      var graph = document.createElement('div');
+      graph.className = 'bar-graph';
+      bar.appendChild(graph);
+
+      chart.appendChild(bar);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote for Top 10 R&B Songs</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .song-block {
+            background-color: #333;
+            border: 1px solid #444;
+            border-radius: 10px;
+            margin: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+            width: 200px; /* Adjusted width for two columns */
+        }
+
+        .song-block:hover {
+            transform: scale(1.05);
+        }
+
+        .song-block img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #444;
+        }
+
+        .song-info {
+            padding: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        #results {
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            background-color: rgba(0, 0, 0, 0.8); /* Adjusted background color */
+            padding: 10px; /* Added padding for better visibility */
+            box-sizing: border-box;
+        }
+
+        #resultsList {
+            list-style: none;
+            padding: 0;
+        }
+
+        #resultsList li {
+            margin: 5px;
+            font-size: 18px;
+        }
+
+        #results.fade-in {
+            opacity: 1;
+        }
+      
+    </style>
+</head>
+<body>
+
+<!-- Song 1 -->
+<div class="song-block" onclick="vote('Song 1')">
+    <img src="songpic.jpeg" alt="Song 1">
+    <div class="song-info">
+        <h3>Song 1</h3>
+        <p>Artist: Artist 1</p>
+        <p>Year: 2023</p>
+    </div>
+    <button>Vote</button>
+</div>
+
+<!-- Song 2 -->
+<div class="song-block" onclick="vote('Song 2')">
+    <img src="songpic.jpeg" alt="Song 2">
+    <div class="song-info">
+        <h3>Song 2</h3>
+        <p>Artist: Artist 2</p>
+        <p>Year: 2023</p>
+    </div>
+    <button>Vote</button>
+</div>
+<!-- Song 3-->
+<div class="song-block" onclick="vote('Song 3')">
+    <img src="songpic.jpeg" alt="Song 3">
+    <div class="song-info">
+        <h3>Song 3</h3>
+        <p>Artist: Artist 3</p>
+        <p>Year: 2023</p>
+    </div>
+    <button>Vote</button>
+</div>
+
+<!-- Song 4 -->
+<div class="song-block" onclick="vote('Song 4')">
+    <img src="songpic.jpeg" alt="Song 4">
+    <div class="song-info">
+        <h3>Song 4</h3>
+        <p>Artist: Artist 4</p>
+        <p>Year: 2023</p>
+    </div>
+    <button>Vote</button>
+</div>
+
+<!-- Song 5 -->
+<div class="song-block" onclick="vote('Song 5')">
+    <img src="songpic.jpeg" alt="Song 5">
+    <div class="song-info">
+        <h3>Song 5</h3>
+        <p>Artist: Artist 5</p>
+        <p>Year: 2023</p>
+    </div>
+    <button>Vote</button>
+</div>
+
+<!-- Song 6 -->
+<div class="song-block" onclick="vote('Song 6')">
+    <img src="songpic.jpeg" alt="Song 6">
+    <div class="song-info">
+        <h3>Song 6</h3>
+        <p>Artist: Artist 6</p>
+        <p>Year: 2023</p>
+    </div>
+    <button>Vote</button>
+</div>
+
+<!-- Song 7 -->
+<div class="song-block" onclick="vote('Song 7')">
+    <img src="songpic.jpeg" alt="Song 7">
+    <div class="song-info">
+        <h3>Song 7</h3>
+        <p>Artist: Artist 7</p>
+        <p>Year: 2023</p>
+    </div>
+    <button>Vote</button>
+</div>
+
+<!-- Song 8 -->
+<div class="song-block" onclick="vote('Song 8')">
+    <img src="songpic.jpeg" alt="Song 8">
+    <div class="song-info">
+        <h3>Song 8</h3>
+        <p>Artist: Artist 8</p>
+        <p>Year: 2023</p>
+    </div>
+    <button>Vote</button>
+</div>
+
+<!-- Song 9 -->
+<div class="song-block" onclick="vote('Song 9')">
+    <img src="songpic.jpeg" alt="Song 9">
+    <div class="song-info">
+        <h3>Song 9</h3>
+        <p>Artist: Artist 9</p>
+        <p>Year: 2023</p>
+    </div>
+    <button>Vote</button>
+</div>
+
+<!-- Song 10 -->
+<div class="song-block" onclick="vote('Song 10')">
+    <img src="songpic.jpeg" alt="Song 10">
+    <div class="song-info">
+        <h3>Song 10</h3>
+        <p>Artist: Artist 10</p>
+        <p>Year: 2023</p>
+    </div>
+    <button>Vote</button>
+</div>
+
+<div id="results" class="fade-in">
+    <h2>Results:</h2>
+    <ul id="resultsList">
+        <li id="song1Votes">Song 1: 0 votes</li>
+        <li id="song2Votes">Song 2: 0 votes</li>
+        <li id="song3Votes">Song 3: 0 votes</li>
+        <li id="song4Votes">Song 4: 0 votes</li>
+        <li id="song5Votes">Song 5: 0 votes</li>
+        <li id="song6Votes">Song 6: 0 votes</li>
+        <li id="song7Votes">Song 7: 0 votes</li>
+        <li id="song8Votes">Song 8: 0 votes</li>
+        <li id="song9Votes">Song 9: 0 votes</li>
+        <li id="song10Votes">Song 10: 0 votes</li>
+        
+    </ul>
+</div>
+
+<script>
+    async function vote(song) {
+        // Replace 'https://your-server.com/vote-endpoint' with your actual server endpoint
+        const voteEndpoint = 'https://your-server.com/vote-endpoint';
+    
+        try {
+            const response = await fetch(voteEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ song: song }),
+            });
+    
+            if (response.ok) {
+                const result = await response.json();
+                console.log('Vote submitted successfully:', result);
+            
+                // Assuming 'result' contains the updated vote count for each song
+                const { song1, song2, song3 } = result;
+            
+                // Update UI to reflect the new vote counts
+                document.getElementById('song1Votes').textContent = `Song 1: ${song1} votes`;
+                document.getElementById('song2Votes').textContent = `Song 2: ${song2} votes`;
+                document.getElementById('song3Votes').textContent = `Song 3: ${song3} votes`;
+                document.getElementById('song4Votes').textContent = `Song 4: ${song3} votes`;
+                document.getElementById('song5Votes').textContent = `Song 5: ${song3} votes`;
+                document.getElementById('song6Votes').textContent = `Song 6: ${song3} votes`;
+                document.getElementById('song7Votes').textContent = `Song 7: ${song3} votes`;
+                document.getElementById('song8Votes').textContent = `Song 8: ${song3} votes`;
+                document.getElementById('song9Votes').textContent = `Song 9: ${song3} votes`;
+                document.getElementById('song10Votes').textContent = `Song 10: ${song3} votes`;
+            
+                // Optionally, you can display a success message or perform additional UI updates
+                displaySuccessMessage('Vote submitted successfully!');
+            } else {
+                console.error('Failed to submit vote. Server returned:', response.status, response.statusText);
+                displayErrorMessage('Failed to submit vote. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            displayErrorMessage('Failed to submit vote. Please try again.');
+        }
+    }
+    
+
+    async function submitVote() {
+        const form = document.getElementById('votingForm');
+        const selectedSong = form.querySelector('input[name="vote"]:checked');
+
+        if (selectedSong) {
+            const songValue = selectedSong.value;
+
+            try {
+                const response = await fetch('https://your-server.com/vote', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ song: songValue }),
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    votes = result.votes; // Assume the server responds with the updated votes
+                    updateResults();
+                } else {
+                    displayErrorMessage('Failed to submit vote. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                displayErrorMessage('Failed to submit vote. Please try again.');
+            }
+        } else {
+            displayErrorMessage('Please select a song before submitting your vote.');
+        }
+    }
+
+    async function updateResults() {
+        try {
+            const response = await fetch('https://your-server.com/results');
+            if (response.ok) {
+                const result = await response.json();
+                document.getElementById('song1Votes').textContent = `Song 1: ${result.song1} votes`;
+                document.getElementById('song2Votes').textContent = `Song 2: ${result.song2} votes`;
+                document.getElementById('song3Votes').textContent = `Song 3: ${result.song3} votes`;
+                document.getElementById('song4Votes').textContent = `Song 4: ${result.song3} votes`;
+                document.getElementById('song5Votes').textContent = `Song 5: ${result.song3} votes`;
+                document.getElementById('song6Votes').textContent = `Song 6: ${result.song3} votes`;
+                document.getElementById('song7Votes').textContent = `Song 7: ${result.song3} votes`;
+                document.getElementById('song8Votes').textContent = `Song 8: ${result.song3} votes`;
+                document.getElementById('song9Votes').textContent = `Song 9: ${result.song3} votes`;
+                document.getElementById('song10Votes').textContent = `Song 10: ${result.song3} votes`;
+                
+            } else {
+                console.error('Failed to fetch results.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+    function displayErrorMessage(message) {
+        const errorMessage = document.createElement('p');
+        errorMessage.style.color = 'red';
+        errorMessage.textContent = message;
+
+        const form = document.getElementById('votingForm');
+        form.appendChild(errorMessage);
+
+        // Remove the error message after a certain period (e.g., 3 seconds)
+        setTimeout(() => {
+            form.removeChild(errorMessage);
+        }, 3000);
+    }
+
+    function goToHomePage() {
+        window.location.href = 'home.html';
+    }
+</script>
+
+</body>
+</html>

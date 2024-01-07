@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELCOME TO THE OTHER SIDE</title>
+    <link rel="stylesheet" href="style_project.css">
+    <link rel="icon" href="official.png">
+    <meta name="description" content="This is the other side website.">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Hide content outside the viewport */
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+            color: white;
+           
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    
+    <header >
+        <div class="logo">
+            <img src="official.png" alt="Logo">
+        </div>
+        
+       
+    </header>
+
+    <div class="image_text">
+    <div class="slider-container">
+        <div class="slide">
+            <section >
+                <h1>Welcome to The Other Side </h1>
+                <p>Unleash your inner critic and let your voice be heard! Our platfrom is a vibrant, dynamic space where students, pupils, and people from all walks of life come together to celebrate the arts.</p>
+                <p>From the pulsating beats of music to the captivating naratives of literature, we cover a wide spectrum of artistic feilds. But what makes us Uniques? It's you! Your vote shapes the landscape of our artistic community.</p>
+                <p>Here, every vote counts. Every opinion matters. Whether you're a fan of soulful melodies or intricate brush strokes, your choice has the power to sportlight talent and bring deserving artists into the limelight.</p>
+                <p>So why wait? Dive in and start exploring.
+                    Vote for your favourite artists and let's discover "The Other Side" of art together!
+                </p>        
+            </section>
+        </div>
+        <div class="slide">
+            <section >
+                <h1>Discover a Diverse Palette of Artistic Expression</h1>
+                <p>At "The Other Side," our platform is a vibrant tapestry that weaves together a diverse range of artistic expressions. Whether you're drawn to the rhythm of music, the strokes of a paintbrush, or the spoken word, we've got something for everyone.</p>
+                <p>Immerse yourself in the melodic symphony of our curated music playlists, spanning genres from classical to contemporary. Explore the galleries adorned with visually striking artworks that tell stories, evoke emotions, and ignite imagination.</p>
+                <p>Engage with thought-provoking literature and poetry that transcends boundaries, taking you on a journey through the written word. Our community is a melting pot of creativity, where every form of art finds its place to shine.</p>
+            </section>
+        </div>
+
+        <div class="slide">
+            <section >
+                <h1>Your Voice Shapes the Artistic Landscape</h1>
+                <p>What sets us apart is the emphasis on your voice. Your preferences, your critiques, and your support directly influence the direction of our artistic community. Cast your votes to elevate the artists who resonate with you, and let your comments spark discussions that fuel creativity.</p>
+                <p>Every week, we feature standout artists who have garnered your admiration. Whether it's the indie musician creating soul-stirring tunes or the emerging painter pushing the boundaries of visual arts, our spotlight is on those who capture your hearts.</p>
+
+            </section>
+        </div>
+        <div class="slide">
+            <section >
+                <h1>Join the Conversation, Unleash Your Creativity</h1>
+                <p>"The Other Side" is not just a platform; it's a dynamic community where art enthusiasts converge. Share your insights, engage in conversations with fellow art lovers, and maybe even collaborate on projects that transcend boundaries.</p>
+                <p>Ready to embark on a journey of artistic discovery? Take a leap and dive into "The Other Side." Your artistic adventure awaits!</p>
+
+            </section>
+        </div>
+        <!-- Add more slides with text/images as needed -->
+    </div>
+
+    </div>
+    <br> <br><br>
+
+    <div class="cta-buttons">
+        <a href="login.html" class="cta-button">Login</a>
+        <a href="signup.html" class="cta-button">Signup</a>
+    </div>
+    
+    <footer>
+        <p>Coyright  &copy; 2023 BBC Innovations</p> 
+        <p><a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+    <script>
+        // JavaScript to handle section transition
+        const sections = document.querySelectorAll('.slide');
+        let currentSection = 0;
+
+        function showSection(index) {
+            sections.forEach((section, i) => {
+                section.style.opacity = i === index ? '1' : '0';
+            });
+        }
+
+        function nextSection() {
+            showSection(currentSection);
+            currentSection = (currentSection + 1) % sections.length;
+        }
+
+        setInterval(nextSection, 4000); // Change section every 5 seconds (adjust as needed)
+
+        // Show the first section immediately when the page loads
+        showSection(currentSection);
+    </script>
+
+</body>
+</html>
+

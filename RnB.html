@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="style_project.css">
+    <title>R&B Section</title>
+    <link rel="icon" href="TOS.jpeg">
+    <meta name="description" content="This is the other side website.">
+
+</head>
+<body>
+    <header>
+        <h1>The Other Side</h1>
+    </header>
+
+    <section>
+        <h1>Welcome to the R&B Section</h1>
+        <p>In this section you get to choose the best R&B artists</p>
+    </section>
+
+    <form id="votingForm">
+        <h2>Select your favorite R&B song:</h2>
+        <label>
+            <input type="radio" name="vote" value="song1"> Song 1
+        </label>
+        <label>
+            <input type="radio" name="vote" value="song2"> Song 2
+        </label>
+        <label>
+            <input type="radio" name="vote" value="song3"> Song 3
+        </label>
+        <button type="button" onclick="submitVote()">Submit Vote</button>
+    </form>
+    <div class="results" id="results">
+        <h2>Results:</h2>
+        <p id="song1Votes">Song 1: 0 votes</p>
+        <p id="song2Votes">Song 2: 0 votes</p>
+        <p id="song3Votes">Song 3: 0 votes</p>
+    </div>
+     <!-- Add a home button to navigate back to the home page -->
+    <a href="#" class="home-button" onclick="goToHomePage()">Back to Home</a>
+</body>  
+</html>  
+
+    <!-- Include this script in your HTML file -->
+<script>
+    async function submitVote() {
+        const form = document.getElementById('votingForm');
+        const selectedSong = form.querySelector('input[name="vote"]:checked');
+
+        if (selectedSong) {
+            const songValue = selectedSong.value;
+
+            try {
+                const response = await fetch('https://your-server.com/vote', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ song: songValue }),
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    votes = result.votes; // Assume the server responds with the updated votes
+                    updateResults();
+                } else {
+                    displayErrorMessage('Failed to submit vote. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                displayErrorMessage('Failed to submit vote. Please try again.');
+            }
+        } else {
+            displayErrorMessage('Please select a song before submitting your vote.');
+        }
+    }
+
+    async function updateResults() {
+        try {
+            const response = await fetch('https://your-server.com/results');
+            if (response.ok) {
+                const result = await response.json();
+                document.getElementById('song1Votes').textContent = `Song 1: ${result.song1} votes`;
+                document.getElementById('song2Votes').textContent = `Song 2: ${result.song2} votes`;
+                document.getElementById('song3Votes').textContent = `Song 3: ${result.song3} votes`;
+            } else {
+                console.error('Failed to fetch results.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+    function displayErrorMessage(message) {
+        const errorMessage = document.createElement('p');
+        errorMessage.style.color = 'red';
+        errorMessage.textContent = message;
+
+        const form = document.getElementById('votingForm');
+        form.appendChild(errorMessage);
+
+        // Remove the error message after a certain period (e.g., 3 seconds)
+        setTimeout(() => {
+            form.removeChild(errorMessage);
+        }, 3000);
+    }
+
+    function goToHomePage() {
+            window.location.href = 'home.html'; 
+    }
+</script>
+
+</body>
+</html>
